@@ -1,0 +1,83 @@
+<div
+  class="border-r h-full architecture-sidebar relative mad-surface-container flex flex-col"
+>
+  @if(isStarted()){
+  <div
+    class="absolute left-0 right-0 bottom-0 top-0 z-50 bg-white opacity-50 cursor-not-allowed"
+  ></div>
+  }
+
+  <div class="flex-1 overflow-y-auto">
+    <div class="flex items-center p-3">
+      <mat-form-field class="w-full">
+        <mat-label>Layer</mat-label>
+        <mat-select [(ngModel)]="selectedBlockType">
+          @for (item of blockTypes(); track $index) {
+          <mat-option [value]="item.type">{{ item.name }}</mat-option>
+
+          }
+        </mat-select>
+      </mat-form-field>
+      <button class="-mt-[15px]" mat-icon-button (click)="addBlock()">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+
+    <mat-nav-list>
+      <mat-list-item [disabled]="true">
+          Input
+      </mat-list-item>
+      @for (block of blocks(); track block.id;let last=$last,index=$index) {
+      <mat-list-item
+        [activated]="menuTrigger.menuOpen"
+        [class.active]="menuTrigger.menuOpen"
+        class="block-item"
+        (click)="selectBlock(block)"
+      >
+        <span matListItemTitle
+          >{{ block.name }} {{ block | layerMainProp }}</span
+        >
+        <button
+          (click)="$event.stopPropagation()"
+          class="block-item-more"
+          mat-icon-button
+          matListItemMeta
+          #menuTrigger="matMenuTrigger"
+          [matMenuTriggerFor]="blockItemMenu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #blockItemMenu="matMenu">
+          <button mat-menu-item (click)="selectBlock(block)">Edit</button>
+          <button mat-menu-item (click)="removeBlock(block)">Delete</button>
+          <button mat-menu-item (click)="insertBlock(index)">
+            Insert layer above
+          </button>
+          <button mat-menu-item (click)="insertBlock(index + 1)">
+            Insert layer below
+          </button>
+        </mat-menu>
+      </mat-list-item>
+      }
+    </mat-nav-list>
+    <div class="flex justify-center"></div>
+  </div>
+  <div class="flex justify-center flex-col pb-2 px-2">
+    <button
+      mat-button
+      class="mad-tertiary-button"
+      (click)="editSelectColumns()"
+    >
+      Select Columns
+    </button>
+    <button mat-button class="mad-tertiary-button" (click)="editDataSplit()">
+      Data Split
+    </button>
+    <button mat-button class="mad-tertiary-button" (click)="editAssemble()">
+      Compile Params
+    </button>
+    <button mat-button class="mad-tertiary-button" (click)="editLearn()">
+      Fit Params
+    </button>
+  </div>
+</div>

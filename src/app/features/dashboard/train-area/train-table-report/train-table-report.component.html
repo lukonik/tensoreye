@@ -1,0 +1,20 @@
+<div style="width: 600px">
+  <table mat-table [dataSource]="displayMetrics()" class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    @for(col of displayedColumns() | slice:1 ; track $index){
+    <ng-container [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef>{{ col }}</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element[col] | number }}
+      </td>
+    </ng-container>
+    }
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns()"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns()"></tr>
+  </table>
+</div>

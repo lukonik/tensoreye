@@ -1,0 +1,24 @@
+.block-list {
+  display: block;
+  width: 240px;
+  height: 100%;
+}
+
+.block-edit {
+  display: block;
+}
+
+.block-item-more {
+  visibility: hidden;
+}
+
+.block-item:hover,
+.block-item.active {
+  .block-item-more {
+    visibility: visible;
+  }
+}
+
+.architecture-sidebar {
+  width: var(--arch-sidebar-width);
+}

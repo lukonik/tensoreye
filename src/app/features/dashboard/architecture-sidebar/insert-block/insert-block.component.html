@@ -1,0 +1,23 @@
+<form (ngSubmit)="save()">
+  <h2 mat-dialog-title>Insert Layer</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="py-4">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Layer Type</mat-label>
+        <mat-select
+          [(ngModel)]="blockType"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          @for (item of blockTypes(); track $index) {
+          <mat-option [value]="item.type">{{ item.name }}</mat-option>
+
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button mat-button type="submit">Save</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,46 @@
+<form (submit)="save($event)">
+  <h2 mat-dialog-title>Compile</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="py-4">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Optimizer</mat-label>
+        <mat-select
+          [value]="assemble().solver"
+          (valueChange)="updateOptimizer($event)"
+        >
+          @for (solver of solvers(); track solver.type) {
+          <mat-option [value]="solver.type">{{ solver.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Loss</mat-label>
+        <mat-select
+          [value]="assemble().residual"
+          (valueChange)="updateLoss($event)"
+        >
+          @for (residual of residuals(); track residual.type) {
+          <mat-option [value]="residual.type">{{ residual.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Metrics</mat-label>
+        <mat-select
+          [value]="assemble().metrics"
+          (valueChange)="updateMetrics($event)"
+          [multiple]="true"
+        >
+          @for (measure of measures(); track measure.type) {
+          <mat-option [value]="measure.type">{{ measure.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button mat-button type="submit">Save</button>
+  </mat-dialog-actions>
+</form>

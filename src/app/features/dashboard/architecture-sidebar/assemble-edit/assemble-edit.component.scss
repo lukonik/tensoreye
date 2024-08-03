@@ -1,0 +1,11 @@
+.assemble-edit {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  width: 300px;
+  right: 0;
+  height: 100%;
+  z-index: 1;
+  background-color: white;
+  @apply p-4;
+}

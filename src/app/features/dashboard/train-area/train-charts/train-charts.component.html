@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-content>
+    <div class="flex items-center overflow-x-auto gap-3 w-full">
+      @for (chart of charts(); track $index) {
+      <app-train-chart
+        [epoch]="epoch() ?? 0"
+        [log]="chart"
+      ></app-train-chart>
+
+      }
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,17 @@
+<form [formGroup]="group" (ngSubmit)="submit()">
+  <h2 mat-dialog-title>Batch Normalization</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="py-4">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Rate</mat-label>
+        <input matInput formControlName="momentum" step="0.01" type="number" />
+        <mat-hint>Rate (must be between 0 and 1)</mat-hint>
+      </mat-form-field>
+      <mat-checkbox class="-ml-3" formControlName="center">Center</mat-checkbox>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button [disabled]="group.invalid" mat-button type="submit">Save</button>
+  </mat-dialog-actions>
+</form>

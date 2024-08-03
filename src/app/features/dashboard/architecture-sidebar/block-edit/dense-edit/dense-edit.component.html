@@ -1,0 +1,33 @@
+<form [formGroup]="group" (ngSubmit)="submit()">
+  <h2 mat-dialog-title>Dense</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="py-4">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Units</mat-label>
+        <input matInput formControlName="units" type="number" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Units</mat-label>
+        <mat-select formControlName="activation">
+          @for (item of outputFunctions(); track $index) {
+          <mat-option [value]="item.type">{{ item.name }}</mat-option>
+
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Kernel Initializer</mat-label>
+        <mat-select formControlName="kernelInitializer">
+          @for (item of kernelInits(); track $index) {
+          <mat-option [value]="item.type">{{ item.name }}</mat-option>
+
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button [disabled]="group.invalid" mat-button type="submit">Save</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,15 @@
+<mat-toolbar class="flex justify-between items-center">
+  <span class="">Tensoreye</span>
+  <app-github-icon></app-github-icon>
+</mat-toolbar>
+<div>
+  <mat-stepper>
+
+    <mat-step label="Upload Data">
+      <app-upload-page></app-upload-page>
+    </mat-step>
+    <mat-step label="Train">
+      <app-dashboard></app-dashboard>
+    </mat-step>
+  </mat-stepper>
+</div>

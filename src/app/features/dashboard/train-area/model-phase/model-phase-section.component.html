@@ -1,0 +1,67 @@
+<div class="mat-elevation-z4 rounded-t-xl">
+  <div class="p-4 flex items-center">
+    @switch (modelPhase()) { @case (MODEL_PHASES.NotBuilt){
+    <button
+      (click)="build()"
+      class="action-button is-starting-button"
+      mat-stroked-button
+    >
+      Build
+    </button>
+    } @case (MODEL_PHASES.Starting) {
+    <button
+      class="action-button is-starting-button"
+      mat-flat-button
+      [disabled]="true"
+    >
+      <mat-spinner [diameter]="20"></mat-spinner>
+    </button>
+    } @case (MODEL_PHASES.Started) {
+    <button class="mad-error-button w-[120px]" (click)="stop()" mat-flat-button>
+      Stop
+      <mat-icon fontIcon="stop_circle"></mat-icon>
+    </button>
+    <div class="flex-1 mx-4">
+      <div
+        [style.width]="reportState.epochProgress() + '%'"
+        class="h-[3px] w-0 bg-[#005cbb] rounded-md"
+      ></div>
+    </div>
+    <span class="mad-label-medium">{{ reportState.epochDisplay() }}</span>
+
+    } @case (MODEL_PHASES.Built){
+    <button (click)="fit()" class="w-[120px]" mat-flat-button>
+      Fit
+      <mat-icon fontIcon="play_arrow"></mat-icon>
+    </button>
+    } @case ((MODEL_PHASES.Trained)) {
+    <button (click)="fit()" class="w-[120px]" mat-flat-button>
+      Re-Fit
+      <mat-icon fontIcon="play_arrow"></mat-icon>
+    </button>
+    <button (click)="evaluate()" class="ml-4" mat-stroked-button>
+      Test Evaluate
+      <mat-icon fontIcon="quiz"></mat-icon>
+    </button>
+    } }
+    <span class="ml-auto"></span>
+    <mat-divider [vertical]="true" class="h-10 pl-3"> </mat-divider>
+    <app-engine-state class="block pl-2"></app-engine-state>
+    <span
+      [matTooltip]="
+        modelPhase() === MODEL_PHASES.NotBuilt
+          ? 'Train model, to download it'
+          : 'download the model'
+      "
+    >
+      <button
+        (click)="download()"
+        class="ml-3"
+        mat-icon-button
+        [disabled]="modelPhase() === MODEL_PHASES.NotBuilt"
+      >
+        <mat-icon>download</mat-icon>
+      </button>
+    </span>
+  </div>
+</div>

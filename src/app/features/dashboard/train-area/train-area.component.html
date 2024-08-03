@@ -1,0 +1,10 @@
+<div class="h-full flex flex-col train-area">
+  <div class="flex-1 overflow-y-auto px-5 pb-10">
+    @if(hasLogs()){
+    <app-train-charts class="block mb-10"></app-train-charts>
+    <app-train-table-report></app-train-table-report>
+    }
+  </div>
+
+  <app-model-phase-section></app-model-phase-section>
+</div>

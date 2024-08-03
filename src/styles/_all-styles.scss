@@ -1,0 +1,126 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  .mad-primary {
+    background-color: mat.get-theme-color($theme, primary);
+  }
+  .mad-primary-text {
+    color: mat.get-theme-color($theme, primary);
+  }
+
+  .mad-on-primary {
+    color: mat.get-theme-color($theme, on-primary);
+  }
+  .mad-primary-container {
+    background: mat.get-theme-color($theme, on-primary);
+  }
+
+  .mad-on-primary-container {
+    color: mat.get-theme-color($theme, on-primary-container);
+  }
+
+  .mad-outline {
+    border-color: mat.get-theme-color($theme, outline);
+  }
+
+  .mad-outline-variant {
+    border-color: mat.get-theme-color($theme, outline-variant);
+  }
+
+  .mad-surface {
+    background: mat.get-theme-color($theme, surface);
+  }
+
+  .mad-on-surface {
+    color: mat.get-theme-color($theme, on-surface);
+  }
+
+  .mad-on-surface-variant {
+    color: mat.get-theme-color($theme, on-surface-variant);
+  }
+
+  .mad-surface-container {
+    background: mat.get-theme-color($theme, surface-container);
+  }
+
+  .mad-surface-container-low {
+    background: mat.get-theme-color($theme, surface-container-low);
+  }
+
+  .mad-surface-container-high {
+    background: mat.get-theme-color($theme, surface-container-high);
+  }
+
+  .mad-error-container {
+    background: mat.get-theme-color($theme, error-container);
+  }
+  .mad-on-error-container {
+    color: mat.get-theme-color($theme, on-error-container);
+  }
+
+  mat-toolbar {
+    --mat-toolbar-container-background-color: #{mat.get-theme-color(
+        $theme,
+        primary,
+        40
+      )};
+    color: mat.get-theme-color($theme, on-primary);
+  }
+}
+
+@mixin typography($theme) {
+  .mad-label-large {
+    font: mat.get-theme-typography($theme, label-large);
+  }
+
+  .mad-label-medium {
+    font: mat.get-theme-typography($theme, label-medium);
+  }
+
+  .mad-label-small {
+    font: mat.get-theme-typography($theme, label-small);
+  }
+
+  .mad-title-medium {
+    font: mat.get-theme-typography($theme, title-medium);
+  }
+
+  .mad-body-small {
+    font: mat.get-theme-typography($theme, body-small);
+  }
+  .mad-body-medium {
+    font: mat.get-theme-typography($theme, body-medium);
+  }
+  .mad-body-large {
+    font: mat.get-theme-typography($theme, body-large);
+  }
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
+
+  @if mat.theme-has($theme, typography) {
+    @include typography($theme);
+  }
+
+  .mad-primary-button {
+    @include mat.button-color($theme, $color-variant: primary);
+  }
+
+  .mad-secondary-button {
+    @include mat.button-color($theme, $color-variant: secondary);
+  }
+  .mad-tertiary-button {
+    @include mat.button-color($theme, $color-variant: tertiary);
+  }
+  .mad-error-button {
+    @include mat.button-color($theme, $color-variant: error);
+  }
+}
+
+.mat-horizontal-content-container {
+  padding: 0 !important;
+}

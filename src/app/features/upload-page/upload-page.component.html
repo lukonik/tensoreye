@@ -1,0 +1,66 @@
+<div class="page-area">
+  <div class="flex flex-col items-center mb-10">
+    <h2 class="my-0">Use common dataset</h2>
+    <p class="italic text-gray-500">
+      The models for common datasets are already pre-built, so you can just
+      click 'Build' and 'Fit' to start training. However, you can tune them as
+      you like.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      @if(engineState.isWasm){
+      <button
+        mat-flat-button
+        [disabled]="loading()"
+        class="cursor-pointer"
+        (click)="chooseDataset(COMMON_DATASET_LIST.CaliforniaHousing)"
+      >
+        California Housing
+      </button>
+      } @for (dataset of commonDatasets(); track $index) {
+      <button
+        [disabled]="loading()"
+        mat-flat-button
+        class="cursor-pointer"
+        (click)="chooseDataset(dataset.type)"
+      >
+        {{ dataset.name }}
+      </button>
+      }
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center">
+    <h2>Or Upload your own training data</h2>
+
+    <ngx-file-drop
+      contentClassName=""
+      dropZoneClassName="upload-zone"
+      (onFileDrop)="dropped($event)"
+    >
+      <ng-template
+        ngx-file-drop-content-tmp
+        let-openFileSelector="openFileSelector"
+      >
+        <div class="flex flex-col items-center">
+          <div class="flex justify-center">
+            <img class="w-14 h-14" src="assets/images/file-upload.svg" />
+          </div>
+          <label class="text-lg mb-3 mt-5 text-slate-600 text-center"
+            >Select a file or drag and drop here</label
+          >
+          <label class="text-md text-slate-400 text-center mb-3"
+            >Data must be clean (.CSV)</label
+          >
+
+          <button
+            mat-button
+            type="button"
+            class="w-[100px]"
+            (click)="openFileSelector()"
+          >
+            Select File
+          </button>
+        </div>
+      </ng-template>
+    </ngx-file-drop>
+  </div>
+</div>

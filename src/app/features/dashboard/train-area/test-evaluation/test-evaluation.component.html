@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Test Evaluation</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="py-6">
+    @for (metr of metrics; track $index) {
+    <div class="flex items-center mad-label-medium">
+      <span class="flex-1"> {{ metr.name }}:</span>
+      <span class="flex-1">{{ metr.value | number }}</span>
+    </div>
+    <div class="my-4">
+      <mat-divider></mat-divider>
+    </div>
+    }
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close type="button">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,14 @@
+@switch (blockType()) { @case (BLOCK_TYPE_LIST.Dense) {
+<app-dense-edit [block]="$any(block())" (save)="save($event)"></app-dense-edit>
+
+} @case (BLOCK_TYPE_LIST.Dropout){
+<app-dropout-edit
+  [block]="$any(block())"
+  (save)="save($event)"
+></app-dropout-edit>
+}@case (BLOCK_TYPE_LIST.BatchNormalization){
+<app-batch-normalization-edit
+  [block]="$any(block())"
+  (save)="save($event)"
+></app-batch-normalization-edit>
+} @default { } }

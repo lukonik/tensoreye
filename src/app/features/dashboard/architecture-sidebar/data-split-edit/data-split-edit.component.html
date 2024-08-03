@@ -1,0 +1,34 @@
+<form [formGroup]="group" (ngSubmit)="submit()">
+  <h2 mat-dialog-title>Data Split</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="py-4">
+      <mat-form-field appearance="outline" class="w-full mb-6">
+        <mat-label>Test Split</mat-label>
+        <input matInput formControlName="testSplit" type="number" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Val Split</mat-label>
+        <input matInput formControlName="validationSplit" type="number" />
+      </mat-form-field>
+
+      <ul class="pl-4">
+        <li>
+          <span class="row-label">Total Rows:</span>
+          <span class="row-value">{{ totalRows() | number }}</span>
+        </li>
+        <li>
+          <span class="row-label">Test Rows:</span>
+          <span class="row-value">{{ testRows() | number }}</span>
+        </li>
+        <li>
+          <span class="row-label">Val Rows:</span>
+          <span class="row-value">{{ validationRows() | number }}</span>
+        </li>
+      </ul>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button [disabled]="group.invalid" mat-button type="submit">Save</button>
+  </mat-dialog-actions>
+</form>
