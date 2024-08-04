@@ -27,3 +27,9 @@ Left-side Panel: This is the model building section, where you can add or remove
 Bottom Panel: This is the action section, where you can build, fit, and evaluate the model. You can also see the progress of the model training here.
 Main Content Area: This section displays the training process, including charts and tables.
 
+## Demo video
+
+
+
+https://github.com/user-attachments/assets/598c54c3-fe9f-4e56-b9b2-8ff3f38dc934
+
