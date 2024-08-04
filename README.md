@@ -1,27 +1,29 @@
 # Tensoreye
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+Tensoreye is a web-based application that allows users to build neural networks using a graphical user interface (GUI).
+you can access it here [tensoreye](https://tensoreye.vercel.app/)
 
-## Development server
+# Technologies Used
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Zoneless Angular 18
+Angular Material for UI
+TailwindCSS for additional styling
+TensorFlow.js for deep learning
+Danfo.js for data manipulation
 
-## Code scaffolding
+# How to Use
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Tensoreye features two main pages:
 
-## Build
+## Upload Data
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+This page is used for data uploading. You can also use the common datasets section, where you can click on any dataset to make it available for immediate use.
 
-## Running unit tests
+## Train the Model
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This page is where you build, run, and download (if desired) your model. There are three main sections:
 
-## Running end-to-end tests
+Left-side Panel: This is the model building section, where you can add or remove layers, configure compile and fit parameters, split the data, and select feature and target columns.
+Bottom Panel: This is the action section, where you can build, fit, and evaluate the model. You can also see the progress of the model training here.
+Main Content Area: This section displays the training process, including charts and tables.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
